@@ -1,0 +1,12 @@
+.mmm-uk-bus-times {
+    font-size: 20px;
+    text-align: center;
+}
+
+.mmm-uk-bus-times table{
+    width: auto;
+}
+
+.mmm-uk-bus-times table tr {
+    line-height: 22px;
+}
