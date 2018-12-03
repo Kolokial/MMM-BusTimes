@@ -2,6 +2,8 @@ Module.register("MMM-BusTimes",{
 	defaults: {
 		text: "Getting bus times!"
 	},
+
+	header: '',
 	
 	getStyles: function() {
 		return ["bus-times.css", "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"];
@@ -23,7 +25,7 @@ Module.register("MMM-BusTimes",{
 			var td = document.createElement("td");
 			tr.appendChild(td);
 			table.appendChild(tr);
-			td.innerHTML = "Waiting for bus times!";
+			td.innerHTML = this.config.text;
 			div.appendChild(table);
 			return div;
 		}
@@ -44,7 +46,7 @@ Module.register("MMM-BusTimes",{
 			tr.appendChild(col3);
 			table.appendChild(tr);
 		}
-		
+		div.appendChild(header);
 		div.appendChild(table);
 		return div;
 	},
@@ -66,7 +68,6 @@ Module.register("MMM-BusTimes",{
 
 	getBusTimes: function() {
 		var self = this;
-		var retry = false;
 		var url = `https://transportapi.com/v3/uk/bus/stop/${this.config.atocode}/live.json?app_id=${this.config.app_id}&app_key=${this.config.api_key}&group=no&nextbuses=no`
 		var busTimesRequest = new XMLHttpRequest();
 		busTimesRequest.open("GET", url, true);
